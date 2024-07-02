@@ -2,6 +2,25 @@
 
 import React, { useState } from 'react';
 import './upload.css';
+import * as THREE from "three";
+import { Canvas, useLoader } from "@react-three/fiber";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { OBJLoader } from "three/examples/jsm/Addons.js";
+import { DDSLoader } from "three-stdlib";
+import { Suspense } from "react";
+
+THREE.DefaultLoadingManager.addHandler(/\.dds$/i, new DDSLoader());
+
+const Scene = ({url}: {url: string}) => {
+  const obj = useLoader(OBJLoader, url, loader => {
+    loader.manager.onError = function (url: string) {
+      console.error(`There was an error loading ${url}`);
+    };
+  });
+
+  console.log(obj);
+  return <primitive object={obj} scale={0.4} />;
+};
 
 const BACKEND_URL = 'http://localhost:8000';
 
@@ -63,8 +82,6 @@ export default function UploadSection() {
                   onChange={(e) => {setFile(e.target.files?.[0])}} className="hidden" />
             </label>
         </div> 
-        {/* Old file input */}
-        {/* <input type="file" name="image" multiple onChange={(e) => {setFile(e.target.files?.[0])}} /> */}
 
 
         <button
@@ -74,12 +91,29 @@ export default function UploadSection() {
           Upload
         </button>
 
-        {/* Old submit button */}
-        {/* <button className='flex flex-col m-auto' type="submit" value="" > Upload </button> */}
       </form>
     
     </div>
-    {objURL && <a href={objURL} className='w-1/3' > Download </a>}
+    {
+      objURL && <a href={objURL} className='w-1/3' > Download </a> &&
+      <Canvas 
+        shadows
+        className="w-full min-h-screen"
+      >
+        <ambientLight intensity={0.5} />
+        <directionalLight 
+          position={[10, 10, 10]} 
+          intensity={1} 
+          castShadow 
+        />
+
+        <Suspense fallback={null}>
+          <Scene url={objURL}></Scene>
+          <OrbitControls />
+        </Suspense>
+      </Canvas>
+
+    }
     </>
   )
 }
