@@ -10,7 +10,7 @@ export default function Viewer({url, rotate}: {url: string, rotate: number[]}) {
         <div className="content-center flex items-center justify-center">
             <Canvas 
                 shadows
-                style={{ height: 300, width: 600 }}
+                style={{ height: 250, width: 600 }}
                 className="flex items-center justify-center"
             >
                 <ambientLight intensity={2} />

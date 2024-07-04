@@ -2,15 +2,17 @@
 
 import './upload.css';
 import React, { useState } from 'react';
-import { DDSLoader } from "three-stdlib";
 import Viewer  from '../ui/viewer';
+import Progress from '../ui/progres';
+import TimeCounter from '../ui/timer';
 
-
-const BACKEND_URL = 'http://localhost:8000';
+const BACKEND_URL = 'http://13.49.145.207:8000';
 
 export default function UploadSection() {
   const [file, setFile] = useState<File>();
   const [objURL, setObjURL] = useState('');
+  const [isProcessed, setIsProcessed] = useState(false);
+  const [loading, setLoading] = useState(false);
   
   const debugURL = "https://volumize-bucket.s3.amazonaws.com/userobj_2495554_1720093439.683805_tmp1ec1_z5e.obj";
   
@@ -27,14 +29,10 @@ export default function UploadSection() {
     }
 
     try {
+      setLoading(true);
       const data = new FormData();
       data.set('image', file);
 
-
-      // const res = await fetch(`${BACKEND_URL}/upload`, {
-      //   method: 'POST',
-      //   body: data
-      // })
       const processRes = await fetch(`${BACKEND_URL}/process`, {
         method: 'POST',
         body: data
@@ -47,7 +45,7 @@ export default function UploadSection() {
       const processResult = await processRes.json();
       if (processRes.ok) {
         console.log('File URL:', processResult.image_url);
-        // setObjURL(processResult.image_url);
+        setIsProcessed(true);
       } else {
         console.error('Upload failed:', processResult.error);
       }
@@ -61,8 +59,8 @@ export default function UploadSection() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(modelData)      
-      })
+        body: JSON.stringify(modelData)
+      });
 
       if (!res.ok) {
         throw new Error(await res.text());
@@ -72,6 +70,7 @@ export default function UploadSection() {
       if (res.ok) {
         console.log('Model URL:', modelResult.model_url);
         setObjURL(modelResult.model_url);
+        setLoading(false);
       } else {
         console.error('Upload failed:', modelResult.error);
       }
@@ -128,7 +127,7 @@ export default function UploadSection() {
 
         <button
           type="submit"
-          className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none hover:ring-blue-300 dark:hover:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 my-1"
+          className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none hover:ring-blue-300 dark:hover:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 my-11"
         >
           Upload
         </button>
@@ -136,11 +135,26 @@ export default function UploadSection() {
       </form>
     
     </div>
+
+    {
+      loading && 
+      <div>
+        <Progress isProcessed={isProcessed} />
+        <TimeCounter />
+      </div>
+    }
+
     {
       objURL &&
-      <div className='w-1/3' > 
+      <div className='h-64 flex flex-col my-auto' > 
         <Viewer url={objURL} rotate={[0, 0, 0]}></Viewer>
-        <a href={objURL} className='w-1/3' > Download </a>
+        <a
+          type="submit"
+          href={objURL}
+          className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none hover:ring-blue-300 dark:hover:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 my-1"
+        >
+          Download
+        </a>
       </div> 
     }
 
