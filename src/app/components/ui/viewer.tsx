@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 
-import Scene from "./Scene";
+import Scene from "./scene";
 
 export default function Viewer({url, rotate}: {url: string, rotate: number[]}) {
     return (
