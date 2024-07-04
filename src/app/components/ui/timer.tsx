@@ -12,8 +12,8 @@ const TimeCounter: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <p>Elapsed Time: {seconds} seconds</p>
+    <div className='text-white'>
+      <p className='text-white' >Elapsed Time: {seconds} seconds</p>
     </div>
   );
 };
