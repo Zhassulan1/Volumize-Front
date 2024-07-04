@@ -1,6 +1,6 @@
 'use client'
 
-
+import Viewer from "./components/ui/viewer";
 
 export default function App() {
   return (
@@ -37,8 +37,8 @@ export default function App() {
                 </div>
               </div>
                 <div>
-                    <div className="-mr-24 rounded-lg md:rounded-l-full bg-gradient-to-br from-gray-900 to-black h-96">
-                      There will be some spinning 3D model in the future
+                    <div className="-mr-24 rounded-lg md:rounded-l-full md:w-auto bg-gradient-to-br from-gray-900 to-black h-96 content-center flex items-center">
+                      <Viewer url="https://volumize-bucket.s3.amazonaws.com/robot_demo.obj" rotate={[0.00, 0.01, 0.00]}></Viewer>
                     </div>
                 </div>
             </div>
@@ -80,3 +80,5 @@ export default function App() {
     </>
   );
 }
+
+
