@@ -11,6 +11,7 @@ const BACKEND_URL = 'http://13.49.145.207:8000';
 export default function UploadSection() {
   const [file, setFile] = useState<File>();
   const [objURL, setObjURL] = useState('');
+  const [imageURL, setImageURL] = useState<string | null>(null);
   const [isProcessed, setIsProcessed] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +21,9 @@ export default function UploadSection() {
     event.preventDefault();
     event.stopPropagation();
     if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
-      setFile(event.dataTransfer.files[0]);
+      const selectedFile = event.dataTransfer.files[0];
+      setFile(selectedFile);
+      setImageURL(URL.createObjectURL(selectedFile));
       event.dataTransfer.clearData();
     }
   };
@@ -28,6 +31,14 @@ export default function UploadSection() {
   const onDragOver = (event: React.DragEvent<HTMLLabelElement>) => {
     event.preventDefault();
     event.stopPropagation();
+  };
+
+  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const selectedFile = event.target.files[0];
+      setFile(selectedFile);
+      setImageURL(URL.createObjectURL(selectedFile));
+    }
   };
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -133,11 +144,17 @@ export default function UploadSection() {
                   type="file"
                   name="image"
                   multiple
-                  onChange={(e) => { setFile(e.target.files?.[0]); }}
+                  onChange={onFileChange}
                   className="hidden"
                 />
               </label>
             </div>
+
+            {imageURL && (
+              <div className="flex items-center justify-center mt-4">
+                <img src={imageURL} alt="Thumbnail" className="w-32 h-32 object-cover rounded-lg" />
+              </div>
+            )}
 
             <button
               type="submit"

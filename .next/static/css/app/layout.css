@@ -707,6 +707,9 @@ video {
 .w-14 {
   width: 3.5rem;
 }
+.w-32 {
+  width: 8rem;
+}
 .w-4 {
   width: 1rem;
 }
@@ -904,6 +907,9 @@ video {
 }
 .fill-blue-600 {
   fill: #2563eb;
+}
+.object-cover {
+  object-fit: cover;
 }
 .p-2 {
   padding: 0.5rem;
