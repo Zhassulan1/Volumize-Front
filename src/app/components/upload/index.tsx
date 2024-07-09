@@ -6,7 +6,7 @@ import Viewer from '../ui/viewer';
 import Progress from '../ui/progres';
 import TimeCounter from '../ui/timer';
 
-const BACKEND_URL = 'http://13.49.145.207:8000';
+const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
 
 export default function UploadSection() {
   const [file, setFile] = useState<File>();
