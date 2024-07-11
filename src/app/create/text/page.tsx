@@ -5,7 +5,7 @@ import Viewer from '@/app/components/ui/viewer';
 import Progress from '@/app/components/ui/progres';
 import TimeCounter from '@/app/components/ui/timer';
 
-const BACKEND_URL = 'http://localhost:8000';
+const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
 
 export default function UploadSection() {
   const [prompt, setPromt] = useState('');
