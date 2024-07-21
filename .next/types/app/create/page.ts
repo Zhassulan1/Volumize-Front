@@ -1,4 +1,4 @@
-// File: C:\Users\Zhkai\Desktop\Volumize\front\src\app\create\page.tsx
+// File: /home/noroot/Desktop/front/src/app/create/page.tsx
 import * as entry from '../../../../src/app/create/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

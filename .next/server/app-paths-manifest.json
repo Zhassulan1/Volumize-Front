@@ -1,4 +1,4 @@
 {
-  "/create/text/page": "app/create/text/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/create/page": "app/create/page.js"
 }

@@ -6,14 +6,46 @@ import Viewer from '../ui/viewer';
 import Progress from '../ui/progres';
 import TimeCounter from '../ui/timer';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
 
+interface Loader {
+  text: string;
+  isFinished: boolean;
+}
+
+
+interface Progress {
+  Loaders: Loader[];
+}
+
+// toast.configure();
 export default function UploadSection() {
   const [file, setFile] = useState<File>();
   const [objURL, setObjURL] = useState('');
   const [imageURL, setImageURL] = useState<string | null>(null);
   const [isProcessed, setIsProcessed] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  let progress: Progress = {
+    Loaders: [
+      {
+        text: 'Uploading image...',
+        isFinished: file !== undefined
+      },
+      {
+        text: 'Processing image...',
+        isFinished: isProcessed
+      },
+      {
+        text: 'Creating 3D model...',
+        isFinished: !!objURL
+      }, 
+
+    ]
+  };
 
   const debugURL = "https://volumize-bucket.s3.amazonaws.com/userobj_2495554_1720093439.683805_tmp1ec1_z5e.obj";
 
@@ -44,6 +76,7 @@ export default function UploadSection() {
   const onRemoveImage = () => {
     setFile(undefined);
     setImageURL(null);
+    setLoading(false);
   };
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -105,7 +138,11 @@ export default function UploadSection() {
       }
 
     } catch (error: any) {
-      console.log(error);
+      console.log("Server error", error);
+      setLoading(false);
+      toast.error("Server error", {
+        autoClose: 5000,
+      });
     }
   };
 
@@ -131,9 +168,9 @@ export default function UploadSection() {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path 
-                      fill-rule="evenodd" 
+                      fillRule="evenodd" 
                       d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" 
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     >
                     </path>
                   </svg>
@@ -193,14 +230,13 @@ export default function UploadSection() {
           </form>
         </div>
 
-        {loading && 
+        {loading ? ( 
           <div>
-            <Progress isProcessed={isProcessed} />
+            <Progress progress={progress} />
             <TimeCounter />
           </div>
-        }
-
-        {(objURL && !loading) &&
+        ) : 
+        ((objURL && !loading) &&
           <div className='h-64 flex flex-col my-auto'>
             <Viewer url={objURL} rotate={[0, 0, 0]} />
 
@@ -212,7 +248,8 @@ export default function UploadSection() {
               Download
             </a>
           </div>
-        }
+        )}
+        <ToastContainer />
       </div>
     </>
   );
