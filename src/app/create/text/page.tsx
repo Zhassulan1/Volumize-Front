@@ -4,8 +4,24 @@ import React, { useState } from 'react';
 import Viewer from '@/app/components/ui/viewer';
 import Progress from '@/app/components/ui/progres';
 import TimeCounter from '@/app/components/ui/timer';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// import Loader from '../ui/loader';
 
 const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
+
+
+
+interface Loader {
+  text: string;
+  isFinished: boolean;
+}
+
+
+interface Progress {
+  Loaders: Loader[];
+}
+
 
 export default function UploadSection() {
   const [prompt, setPromt] = useState('');
@@ -13,6 +29,26 @@ export default function UploadSection() {
   const [imageURL, setImageURL] = useState<string | null>(null);
   const [isProcessed, setIsProcessed] = useState(false);
   const [loading, setLoading] = useState(false);
+
+
+
+  let progress: Progress = {
+    Loaders: [
+      {
+        text: 'Generating image...',
+        isFinished: imageURL !== undefined
+      },
+      {
+        text: 'Processing image...',
+        isFinished: isProcessed
+      },
+      {
+        text: 'Creating 3D model...',
+        isFinished: !!objURL
+      }, 
+
+    ]
+  };
 
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -24,27 +60,32 @@ export default function UploadSection() {
     try {
       setLoading(true);
         
-      const prompt_obj = {
-        prompt: prompt
-      }
+      // const prompt_obj = {
+      //   prompt: prompt
+      // }
 
-        console.log(prompt);
+      console.log(prompt);
       const imageRes = await fetch(`${BACKEND_URL}/generate_image`, {
         method: 'POST',
         body: `{
           "prompt": "${prompt}"
         }`
       });
+      if (!imageRes.ok) {
+        throw new Error(await imageRes.text());
+      }
 
       const imageResult = await imageRes.json();
+      setImageURL(imageResult.file_url);
       const image = {
-        image_url:  imageResult.file_url
+        image_url:  imageURL
       };
       console.log(image)
       const processRes = await fetch(`${BACKEND_URL}/process_url`, {
         method: 'POST',
         body: JSON.stringify(image)
       });
+
 
       if (!processRes.ok) {
         throw new Error(await processRes.text());
@@ -84,6 +125,9 @@ export default function UploadSection() {
       }
 
     } catch (error: any) {
+      toast.error("Server error", {
+        autoClose: 5000,
+      });
       console.log(error);
     }
   };
@@ -115,7 +159,7 @@ export default function UploadSection() {
 
                     {loading && 
                     <div>
-                        <Progress isProcessed={isProcessed} />
+                        <Progress progress={progress} />
                         <TimeCounter />
                     </div>
                     }

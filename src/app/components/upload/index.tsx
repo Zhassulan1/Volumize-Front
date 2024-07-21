@@ -8,6 +8,7 @@ import TimeCounter from '../ui/timer';
 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../ui/loader';
 
 const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
 
