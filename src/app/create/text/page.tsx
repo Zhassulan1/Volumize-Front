@@ -80,37 +80,35 @@ export default function UploadSection() {
       const processRes = await axios.post(`${BACKEND_URL}/process_url`, {
           image_url:  imageRes.data.file_url
         }, {timeout: 180000}
-      );
+      ).catch((error) => {
+        throw new Error("Processing image failed", error.message);
+      });
 
-      if (!processRes) {
-        console.error('Upload failed:');
-        throw new Error("Processing image failed")
-      }
       console.log("URL for processed image: ", processRes.data.image_url)
       setIsProcessed(true);
 
       const res = await axios.post(`${BACKEND_URL}/make_3d`, {
         image_url: processRes.data.image_url
-      }, {timeout: 180000});
-      if (!res) {
-        throw new Error("Generation failed");
-      }
+      }, {timeout: 180000}).catch((error) => {
+        throw new Error(error.message);
+      });
+
       console.log('Model URL:', res.data.model_url);
       setObjURL(res.data.model_url);
       setLoading(false);
 
     } catch (error: any) {
-      toast.error("Server error", {
+      toast.error("Network error", {
         autoClose: 5000,
       });
-      console.log(error);
+      console.log(error.message);
     }
   };
 
   return (
     <>
       <div className="bg-gradient-to-br from-gray-900 to-black align-middle justify-between">
-        <div className='flex flex-row m-auto justify-center align-middle min-h-screen items-start'>
+        <div className='flex flex-row m-auto justify-center content-center items-start min-h-screen '>
           <div className='w-1/3 p-5'>
             <form onSubmit={onSubmit} className='flex flex-col m-auto'>
               <label 
@@ -119,7 +117,7 @@ export default function UploadSection() {
               >
                 Describe your model
               </label>
-              <TextArea onChange={setPromt}/>
+              <TextArea onChange={setPromt} />
               <button
                 type="submit"
                 className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none hover:ring-blue-300 dark:hover:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 my-11"
@@ -131,13 +129,13 @@ export default function UploadSection() {
 
           {
             loading ? (
-              <div>
+              <div className='flex flex-col my-16'>
                 <Progress progress={progress} />
                 <TimeCounter />
               </div>
             ) : (
               objURL &&
-              <div className='flex flex-col my-auto'>
+              <div className='flex flex-col'>
                 <Viewer url={objURL} rotate={[0, 0, 0]} />
                 <PrimaryLink text="Download" url={objURL} />
               </div>
@@ -145,6 +143,7 @@ export default function UploadSection() {
           }
 
         </div>
+        <ToastContainer />
       </div>
     </>
   );
