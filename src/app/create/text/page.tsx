@@ -74,7 +74,8 @@ export default function UploadSection() {
         prompt: prompt
       }, {timeout: 180000});
       setImageURL(imageRes.data.file_url);
-      console.log("image URL", imageRes.data.file_url)
+      console.log("image res: ", imageRes)
+      console.log("image URL: ", imageRes.data.file_url)
 
 
       const processRes = await axios.post(`${BACKEND_URL}/process_url`, {
@@ -98,7 +99,7 @@ export default function UploadSection() {
       setLoading(false);
 
     } catch (error: any) {
-      toast.error("Network error", {
+      toast.error("Server error", {
         autoClose: 5000,
       });
       console.log(error.message);
