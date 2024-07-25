@@ -21,7 +21,7 @@ export default function App() {
             <div className="h-32 md:h-40"></div>
 
             <div className="grid gap-8 md:grid-cols-2">
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center overflow-x-visible">
                 <p
                   className="self-start inline font-sans text-xl font-medium text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
                   Simple and easy
