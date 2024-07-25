@@ -1,10 +1,13 @@
 'use client'
 
+import Header from "./components/header";
 import Viewer from "./components/ui/viewer";
 
 export default function App() {
   return (
     <>
+      <Header mainBtnText={"Get started"} />
+
       <div className="bg-gradient-to-br from-gray-900 to-black">
         <div className="text-gray-300 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
             <p className="font-sans text-4xl font-bold text-gray-200 max-w-5xl lg:text-7xl lg:pr-24 md:text-6xl">

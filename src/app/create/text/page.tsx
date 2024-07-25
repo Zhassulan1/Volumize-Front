@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { TextArea } from '@/app/components/ui/textArea';
 import PrimaryLink from '@/app/components/ui/primaryLink';
 import axios from 'axios';
+import Header from '@/app/components/header';
 // import Loader from '../ui/loader';
 
 const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
@@ -108,6 +109,7 @@ export default function UploadSection() {
 
   return (
     <>
+      <Header />
       <div className="bg-gradient-to-br from-gray-900 to-black align-middle justify-between">
         <div className='flex flex-row m-auto justify-center content-center items-start min-h-screen '>
           <div className='w-1/3 p-5'>
