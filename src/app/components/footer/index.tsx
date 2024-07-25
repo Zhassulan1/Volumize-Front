@@ -9,7 +9,7 @@ export default function Footer() {
                 <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
                     <div>
                         <h2 className="mb-6 text-sm font-semibold uppercase text-white">Company</h2>
-                        <ul className=" font-medium">
+                        <ul className="text-gray-400 font-medium">
                             <li className="mb-4">
                                 <a href="#" className=" hover:underline">About</a>
                             </li>
@@ -20,7 +20,7 @@ export default function Footer() {
                     </div>
                     <div>
                         <h2 className="mb-6 text-sm font-semibold uppercase text-white">Help center</h2>
-                        <ul className="font-medium">
+                        <ul className="text-gray-400 font-medium">
                             <li className="mb-4">
                                 <a href="#" className="hover:underline">Discord Server</a>
                             </li>
