@@ -5,12 +5,19 @@ import { Suspense } from "react";
 
 import Scene from "./scene";
 
-export default function Viewer({url, rotate}: {url: string, rotate: number[]}) {
+interface Props{
+    url: string;
+    rotate: number[];
+    height?: number;
+    width?: number;
+}
+
+export default function Viewer({url, rotate, height, width}: Props) {
     return (
         <div className="content-center flex flex-fol items-center justify-center">
             <Canvas 
                 shadows
-                style={{ height: 250, width: 600 }}
+                style={{ height: height || 250, width: width || 600 }}
                 className="flex items-center justify-center"
             >
                 <ambientLight intensity={2} />
