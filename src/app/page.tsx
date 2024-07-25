@@ -3,6 +3,9 @@
 import Header from "./components/header";
 import Viewer from "./components/ui/viewer";
 
+const ROBOT_DEMO_URL = "https://volumize-bucket.s3.amazonaws.com/robot_demo.obj"
+// const ROBOT_DEMO_URL = ""
+
 export default function App() {
   return (
     <>
@@ -21,14 +24,16 @@ export default function App() {
             <div className="h-32 md:h-40"></div>
 
             <div className="grid gap-8 md:grid-cols-2">
-              <div className="flex flex-col justify-center overflow-x-visible">
+              <div className="flex flex-col justify-center">
                 <p
                   className="self-start inline font-sans text-xl font-medium text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
                   Simple and easy
                 </p>
-                <h2 className="text-4xl font-bold">Made for 3D  artists and designers</h2>
-                <div className="h-6"></div>
-                <div className="grid grid-cols-2 gap-4 pt-8 border-t border-gray-800"></div>
+                <div className="">
+                  <h2 className="text-4xl font-bold">Made for 3D  artists and designers</h2>
+                  <div className="h-6"></div>
+                  <div className="grid grid-cols-2 gap-4 pt-8 border-t border-gray-800"></div>
+                </div>
 
                 <div className="grid gap-8 md:grid-cols-3">
                   <div className="flex flex-col justify-center md:col-span-2">
@@ -41,7 +46,7 @@ export default function App() {
               </div>
                 <div>
                     <div className="-mr-24 rounded-lg md:rounded-l-full md:w-auto bg-gradient-to-br from-gray-900 to-black h-96 content-center flex items-center">
-                      <Viewer url="https://volumize-bucket.s3.amazonaws.com/robot_demo.obj" rotate={[0.00, 0.01, 0.00]}></Viewer>
+                      <Viewer url={ROBOT_DEMO_URL} rotate={[0.00, 0.01, 0.00]}></Viewer>
                     </div>
                 </div>
             </div>
