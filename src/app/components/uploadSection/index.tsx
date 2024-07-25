@@ -149,8 +149,8 @@ export default function UploadSection() {
 
   return (
     <>
-      <div className='flex flex-row items-center m-auto justify-center align-middle'>
-        <div className='w-1/3 p-5'>
+      <div className='md:flex md:flex-row items-center justify-center align-middle'>
+        <div className='md:w-1/3 p-5 w-screen'>
           <form onSubmit={onSubmit} className='flex flex-col m-auto'>
             {imageURL ? (
               <Thumbnail imageURL={imageURL} onRemoveImage={onRemoveImage} /> 
@@ -168,13 +168,13 @@ export default function UploadSection() {
         </div>
         {
           loading ? ( 
-            <div>
+            <div className='items-center md:mx-0 m-auto max-w-64'>
               <Progress progress={progress} />
               <TimeCounter />
             </div>
           ) : (
             (objURL) &&
-            <div className='h-64 flex flex-col my-auto'>
+            <div className='h-64 flex flex-col my-16'>
               <Viewer url={objURL} rotate={[0, 0, 0]} />
               <PrimaryLink text="Download" url={objURL} />
             </div>

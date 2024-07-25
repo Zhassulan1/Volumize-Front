@@ -100,6 +100,8 @@ export default function UploadSection() {
       setLoading(false);
 
     } catch (error: any) {
+      console.log("Server error", error);
+      setLoading(false);
       toast.error("Server error", {
         autoClose: 5000,
       });
@@ -111,19 +113,19 @@ export default function UploadSection() {
     <>
       <Header />
       <div className="bg-gradient-to-br from-gray-900 to-black align-middle justify-between">
-        <div className='flex flex-row m-auto justify-center content-center items-start min-h-screen '>
-          <div className='w-1/3 p-5'>
+        <div className='md:flex md:flex-row items-center justify-center align-middle min-h-screen '>
+          <div className='md:w-1/3 p-5 w-screen'>
             <form onSubmit={onSubmit} className='flex flex-col m-auto'>
               <label 
                 htmlFor="message" 
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-white"
               >
                 Describe your model
               </label>
               <TextArea onChange={setPromt} />
               <button
                 type="submit"
-                className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none hover:ring-blue-300 dark:hover:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 my-11"
+                className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none hover:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 my-11"
               >
                 Generate
               </button>
@@ -132,13 +134,13 @@ export default function UploadSection() {
 
           {
             loading ? (
-              <div className='flex flex-col my-16'>
+              <div className='items-center md:mx-0 m-auto max-w-64'>
                 <Progress progress={progress} />
                 <TimeCounter />
               </div>
             ) : (
               objURL &&
-              <div className='flex flex-col'>
+              <div className='h-64 flex flex-col my-16'>
                 <Viewer url={objURL} rotate={[0, 0, 0]} />
                 <PrimaryLink text="Download" url={objURL} />
               </div>

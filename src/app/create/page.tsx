@@ -13,6 +13,9 @@ export default function Create() {
             <div className="min-h-screen align-middle justify-center">
 
                 <UploadSection></UploadSection>
+                <br />
+                <br />
+                
                 <div className="align-middle justify-center flex">
                     <SecondaryLink text="Try Creating 3D Model from text" url="/create/text" />
                 </div>
