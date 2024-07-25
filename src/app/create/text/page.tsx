@@ -113,7 +113,9 @@ export default function UploadSection() {
     <>
       <Header />
       <div className="bg-gradient-to-br from-gray-900 to-black align-middle justify-between">
-        <div className='md:flex md:flex-row items-center justify-center align-middle min-h-screen '>
+      <div className="min-h-screen align-middle justify-center">
+
+        <div className='md:flex md:flex-row items-center justify-center align-middle'>
           <div className='md:w-1/3 p-5 w-screen'>
             <form onSubmit={onSubmit} className='flex flex-col m-auto'>
               <label 
@@ -149,6 +151,7 @@ export default function UploadSection() {
 
         </div>
         <ToastContainer />
+        </div>
       </div>
     </>
   );
