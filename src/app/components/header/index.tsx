@@ -3,7 +3,7 @@
 import "./header.css"
 import { useState } from 'react';
 
-export default function Header({ mainBtnText }: { mainBtnText: string }) {
+export default function Header({ mainBtnText }: { mainBtnText?: string }) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const handleMobileMenuToggle = () => {
@@ -12,7 +12,7 @@ export default function Header({ mainBtnText }: { mainBtnText: string }) {
 
     return (
         <header>
-            <nav className="border-gray-200 px-4 lg:px-6 py-2.5 bg-gray-800">
+            <nav className="border-gray-200 px-4 lg:px-6 py-2.5 bg-gray-800 z-10">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <a href="/" className="flex items-center">
                         <img src="/logo.png" className="mr-3 h-6 sm:h-9" alt="Volumize Logo" />
@@ -22,13 +22,20 @@ export default function Header({ mainBtnText }: { mainBtnText: string }) {
                         {/* <a href="#" className="text-gray-800 text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800">Log in</a> */}
                         
                         {
-                            (!!mainBtnText) &&
+                            (!!mainBtnText) ? (
                             <a 
                                 href="/create" 
                                 className="text-white focus:ring-4 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-primary-800"
                             >
                                 Get started
                             </a>
+                            ) : (
+                                <button  
+                                className="z-0 text-gray-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 bg-gray-800 focus:outline-none"
+                            >
+                                Get started
+                            </button>
+                            )
                         }
                         <button 
                             data-collapse-toggle="mobile-menu-2" 
@@ -99,8 +106,3 @@ export default function Header({ mainBtnText }: { mainBtnText: string }) {
     )
 }
 
-
-
-Header.defaultProps = {
-    mainBtnText: ''
-}
