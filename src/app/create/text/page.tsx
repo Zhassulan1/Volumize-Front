@@ -12,8 +12,8 @@ import axios from 'axios';
 import Header from '@/app/components/header';
 // import Loader from '../ui/loader';
 
-const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
-// const BACKEND_URL = 'http://localhost:8000';
+// const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
+const BACKEND_URL = 'http://localhost:8000';
 
 
 

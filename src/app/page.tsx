@@ -13,6 +13,9 @@ export default function App() {
 
       <div className="bg-gradient-to-br from-gray-900 to-black">
         <div className="text-gray-300 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
+          
+            <div className="h-15 md:h-20"></div>
+
             <p className="font-sans text-4xl font-bold text-gray-200 max-w-5xl lg:text-7xl lg:pr-24 md:text-6xl">
                 Spend less time shaping and more time creating
             </p>
@@ -32,7 +35,7 @@ export default function App() {
                 <div className="">
                   <h2 className="text-4xl font-bold">Made for 3D  artists and designers</h2>
                   <div className="h-6"></div>
-                  <div className="grid grid-cols-2 gap-4 pt-8 border-t border-gray-800"></div>
+                  <div className="grid grid-cols-2 gap-4 pt-8 border-t border-gray-600"></div>
                 </div>
 
                 <div className="grid gap-8 md:grid-cols-3">
@@ -54,7 +57,7 @@ export default function App() {
             <div className="h-32 md:h-40"></div>
 
             <div className="grid gap-4 md:grid-cols-3">
-                <div className="flex-col p-8 py-16 rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
+                <div className="flex-col p-8 py-16 rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-primary-600 to-black">
                     <p
                         className="flex items-center justify-center text-4xl font-semibold text-green-400 bg-green-800 rounded-full shadow-lg w-14 h-14">
                         1
@@ -62,7 +65,7 @@ export default function App() {
                     <div className="h-6"></div>
                     <p className="font-serif text-3xl">We build models with quality in mind</p>
                 </div>
-                <div className="flex-col p-8 py-16 rounded-lg shadow-2xl md:p-12 bg-gradient-to-b from-gray-900 to-black">
+                <div className="flex-col p-8 py-16 rounded-lg shadow-2xl md:p-12 bg-gradient-to-b from-primary-600 to-black">
                     <p
                         className="flex items-center justify-center text-4xl font-semibold text-indigo-400 bg-indigo-800 rounded-full shadow-lg w-14 h-14">
                         2
@@ -72,7 +75,7 @@ export default function App() {
                         Models are created super fast
                     </p>
                 </div>
-                <div className="flex-col p-8 py-16 rounded-lg shadow-2xl md:p-12 bg-gradient-to-bl from-gray-900 to-black">
+                <div className="flex-col p-8 py-16 rounded-lg shadow-2xl md:p-12 bg-gradient-to-bl from-primary-600 to-black">
                     <p
                         className="flex items-center justify-center text-4xl font-semibold text-teal-400 bg-teal-800 rounded-full shadow-lg w-14 h-14">
                         3
