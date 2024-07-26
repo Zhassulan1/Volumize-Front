@@ -14,6 +14,7 @@ import Upload from '../ui/upload';
 import Thumbnail from '../ui/thumbnail';
 
 const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
+// const BACKEND_URL = 'http://localhost:8000';
 
 interface Loader {
   text: string;

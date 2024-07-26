@@ -1,3 +1,5 @@
+// "use client";
+
 import React from 'react';
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -5,8 +7,6 @@ import { Suspense } from "react";
 import { useState } from "react";
 import Scene from "./scene";
 import StretchBtn from './stretchBtn';
-
-// "use client"
 
 interface Props{
     url: string;
