@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Viewer from '../ui/viewer';
 import Progress from '../ui/progress';
 import TimeCounter from '../ui/timer';
+import axios from 'axios';
 
 import PrimaryLink from '@/app/components/ui/primaryLink';
 import { toast, ToastContainer } from 'react-toastify';
@@ -96,52 +97,34 @@ export default function UploadSection() {
       const data = new FormData();
       data.set('image', file);
 
-      const processRes = await fetch(`${BACKEND_URL}/process`, {
-        method: 'POST',
-        body: data
+
+      const processRes = await axios({
+        method: 'post',
+        url: `${BACKEND_URL}/process`,
+        data: data,
+        headers: { "Content-Type": "multipart/form-data" },
+        timeout: 180000,
+      }).catch((error) => {
+        throw new Error("Processing image failed", error.message);
+      });      
+
+      console.log('File URL:', processRes.data.image_url);
+      setIsProcessed(true);
+
+      const res = await axios.post(`${BACKEND_URL}/make_3d`, {
+        image_url: processRes.data.image_url
+      }, {timeout: 180000}).catch((error) => {
+        throw new Error("Processing image failed", error.message);
       });
-
-      if (!processRes.ok) {
-        throw new Error(await processRes.text());
-      }
-
-      const processResult = await processRes.json();
-      if (processRes.ok) {
-        console.log('File URL:', processResult.image_url);
-        setIsProcessed(true);
-      } else {
-        console.error('Upload failed:', processResult.error);
-      }
-
-      const modelData = {
-        image_url: processResult.image_url
-      };
-
-      const res = await fetch(`${BACKEND_URL}/make_3d`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(modelData)
-      });
-
-      if (!res.ok) {
-        throw new Error(await res.text());
-      }
-
-      const modelResult = await res.json();
-      if (res.ok) {
-        console.log('Model URL:', modelResult.model_url);
-        setObjURL(modelResult.model_url);
-        setLoading(false);
-      } else {
-        console.error('Upload failed:', modelResult.error);
-      }
+      console.log('Model URL:', res.data.model_url);
+      setObjURL(res.data.model_url);
+      setLoading(false);
 
     } catch (error: any) {
-      console.log("Server error", error);
+      console.log(error);
       setLoading(false);
-      toast.error("Server error", {
+      setIsProcessed(false);
+      toast.error(error.message, {
         autoClose: 5000,
       });
     }
