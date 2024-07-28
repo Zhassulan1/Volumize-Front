@@ -26,7 +26,6 @@ interface Progress {
   Loaders: Loader[];
 }
 
-// toast.configure();
 export default function UploadSection() {
   const [file, setFile] = useState<File>();
   const [objURL, setObjURL] = useState('');
