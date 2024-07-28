@@ -56,6 +56,7 @@ export default function Upload({ setFile, setImageURL, setLoading }: { setFile:a
             <p className="text-xs text-gray-400">
               SVG, PNG, JPG (MAX. 10MB) 
             </p>
+            <br />
             <p> .heic format NOT supported </p>
           </div>
           <input
