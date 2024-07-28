@@ -1,4 +1,4 @@
-export function TextArea({ onChange }: { onChange: any }) {
+export default function TextArea({ onChange }: { onChange: any }) {
     return (
         <textarea 
             id="prompt" 

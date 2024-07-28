@@ -1,16 +1,17 @@
 "use client";
 
 import React, { useState } from 'react';
-import Viewer from '@/app/components/ui/viewer';
-import Progress from '@/app/components/ui/progress';
-import TimeCounter from '@/app/components/ui/timer';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { TextArea } from '@/app/components/ui/textArea';
-import PrimaryLink from '@/app/components/ui/primaryLink';
 import axios from 'axios';
-import Header from '@/app/components/header';
-// import Loader from '../ui/loader';
+import { toast, ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+import Header from '@/app/components/layout/header';
+import TextArea from '@/app/components/ui/textArea';
+import Progress from '@/app/components/ui/progress';
+import Viewer from '@/app/components/ui/viewer';
+import TimeCounter from '@/app/components/ui/timer';
+import PrimaryLink from '@/app/components/ui/primaryLink';
 
 const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
 // const BACKEND_URL = 'http://localhost:8000';
@@ -76,7 +77,6 @@ export default function UploadSection() {
         prompt: prompt
       }, {timeout: 180000});
       setImageURL(imageRes.data.file_url);
-      console.log("image res: ", imageRes)
       console.log("image URL: ", imageRes.data.file_url)
 
 

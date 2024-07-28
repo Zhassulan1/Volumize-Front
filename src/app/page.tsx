@@ -1,6 +1,6 @@
 'use client'
 
-import Header from "./components/header";
+import Header from "./components/layout/header";
 import Viewer from "./components/ui/viewer";
 
 const ROBOT_DEMO_URL = "https://volumize-bucket.s3.amazonaws.com/robot_demo.obj"
