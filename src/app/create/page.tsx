@@ -144,7 +144,7 @@ export default function Create() {
                 {imageURL ? (
                   <Thumbnail imageURL={imageURL} onRemoveImage={onRemoveImage} /> 
                 ) : (
-                    <Upload setFile={setFile} setImageURL={setImageURL} setLoading={setLoading}></Upload>              
+                    <Upload setFile={setFile} setImageURL={setImageURL}></Upload>              
                 )}
 
                 <button

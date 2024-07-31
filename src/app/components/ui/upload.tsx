@@ -1,4 +1,4 @@
-export default function Upload({ setFile, setImageURL, setLoading }: { setFile:any, setImageURL:any, setLoading:any }) {
+export default function Upload({ setFile, setImageURL }: { setFile:any, setImageURL:any }) {
     
 
     const onDrop = (event: React.DragEvent<HTMLLabelElement>) => {
