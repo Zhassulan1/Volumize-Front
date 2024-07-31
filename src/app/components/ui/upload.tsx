@@ -54,7 +54,7 @@ export default function Upload({ setFile, setImageURL }: { setFile:any, setImage
               <span className="font-semibold">Click to upload</span> or drag and drop
             </p>
             <p className="text-xs text-gray-400">
-              SVG, PNG, JPG (MAX. 10MB) 
+              WebP, PNG, JPG, HEIF (MAX. 10MB) 
             </p>
             <br />
             <p> .heic format NOT supported </p>
