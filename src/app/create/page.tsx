@@ -95,6 +95,9 @@ export default function Create() {
     }
 
     try {
+      setObjURL("");
+      setImageURL("");
+      setIsProcessed(false);  
       setLoading(true);
       const data = new FormData();
       data.set('image', file);

@@ -58,17 +58,21 @@ export default function UploadSection() {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    
     const debug = false;
     if (debug) {
       setObjURL(debugURL);
       return;
     }
-
+    
     if (!prompt) {
       return;
     }
-
+    
     try {
+      setObjURL("");
+      setImageURL("");
+      setIsProcessed(false);
       setLoading(true);
 
       console.log(prompt);
