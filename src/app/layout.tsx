@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Volumize AI",
-  description: "From photo to 3D in a couple of minutes",
+  description: "3D model by AI for free in less that 3 minutes.",
 };
 
 export default function RootLayout({
