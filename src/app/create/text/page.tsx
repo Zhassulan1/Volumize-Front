@@ -122,6 +122,7 @@ export default function UploadSection() {
         <div className='md:flex md:flex-row items-center justify-center align-middle'>
           <div className='md:w-1/3 p-5 w-screen'>
             <form onSubmit={onSubmit} className='flex flex-col m-auto'>
+              {/* <div className="h-30 md:h-14"></div> */}
               <label 
                 htmlFor="message" 
                 className="block mb-2 text-sm font-medium text-white"
@@ -136,6 +137,7 @@ export default function UploadSection() {
                 Generate
               </button>
             </form>
+            <div className="md:h-36"></div>
           </div>
 
           {
@@ -146,9 +148,11 @@ export default function UploadSection() {
               </div>
             ) : (
               objURL &&
-              <div className='h-64 flex flex-col my-16'>
+              <div className='min-h-64 flex flex-col my-16'>
+                <span className='text-gray-400 flex flex-row justify-center px-5'> Model is ready and will appear soon depending on your internet: </span>
                 <Viewer url={objURL} rotate={[0, 0, 0]} />
                 <PrimaryLink1 text="Download" url={objURL} />
+                <div className="h-40 md:h-36"></div>
               </div>
             )
           }

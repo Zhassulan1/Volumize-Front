@@ -84,7 +84,7 @@ export default function Create() {
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const debug = false;
+    const debug = true;
     if (debug) {
       setObjURL(debugURL);
       return;
@@ -139,9 +139,10 @@ export default function Create() {
       <div className="bg-gradient-to-br from-gray-900 to-black align-middle justify-between">
         <div className="min-h-screen align-middle justify-center">
 
-          <div className='md:flex md:flex-row items-center justify-center align-middle'>
+          <div className='md:flex md:flex-row items-center justify-center align-top'>
             <div className='md:w-1/3 p-5 w-screen'>
               <form onSubmit={onSubmit} className='flex flex-col m-auto'>
+                <div className="h-32 md:h-11"></div>
                 {imageURL ? (
                   <Thumbnail imageURL={imageURL} onRemoveImage={onRemoveImage} /> 
                 ) : (
@@ -165,6 +166,7 @@ export default function Create() {
               ) : (
                 (objURL) &&
                 <div className='h-64 flex flex-col my-16'>
+                  <span className='text-gray-400 flex flex-row justify-center px-5'> Model is ready and will appear soon depending on your internet: </span>
                   <Viewer url={objURL} rotate={[0, 0, 0]} />
                   <PrimaryLink1 text="Download" url={objURL} />
                 </div>
@@ -179,7 +181,7 @@ export default function Create() {
           <div className="align-middle justify-center flex">
             <SecondaryLink text="Try Creating 3D Model from text" url="/create/text" />
           </div>
-
+          <div className="h-32 md:h-11"></div>
         </div>
       </div>
     </>
