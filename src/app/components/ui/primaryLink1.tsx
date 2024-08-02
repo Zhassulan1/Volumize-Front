@@ -1,4 +1,4 @@
-export default function PrimaryLink({ text, url }: { text: string, url: string }) {
+export default function PrimaryLink1({ text, url }: { text: string, url: string }) {
     return (
         <a
             href={url}

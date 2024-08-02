@@ -11,10 +11,10 @@ import TextArea from '@/app/components/ui/textArea';
 import Progress from '@/app/components/ui/progress';
 import Viewer from '@/app/components/ui/viewer';
 import TimeCounter from '@/app/components/ui/timer';
-import PrimaryLink from '@/app/components/ui/primaryLink';
+import PrimaryLink1 from '@/app/components/ui/primaryLink1';
 
-const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
-// const BACKEND_URL = 'http://localhost:8000';
+// const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
+const BACKEND_URL = 'http://localhost:8000';
 
 
 
@@ -149,7 +149,7 @@ export default function UploadSection() {
               objURL &&
               <div className='h-64 flex flex-col my-16'>
                 <Viewer url={objURL} rotate={[0, 0, 0]} />
-                <PrimaryLink text="Download" url={objURL} />
+                <PrimaryLink1 text="Download" url={objURL} />
               </div>
             )
           }

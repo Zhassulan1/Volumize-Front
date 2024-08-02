@@ -24,7 +24,9 @@ export default function App() {
               From photo to 3D in a couple of minutes
             </p>
 
-            <div className="h-32 md:h-40"></div>
+            <div className="h-32 md:h-10"></div>
+              
+            <div className="h-32 md:h-10"></div>
 
             <div className="grid gap-8 md:grid-cols-2">
               <div className="flex flex-col justify-center">

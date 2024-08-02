@@ -13,7 +13,7 @@ import Header from "../components/layout/header";
 import Upload from '../components/ui/upload';
 import Thumbnail from '../components/ui/thumbnail';
 import Loader from '../components/ui/loader';
-import PrimaryLink from '@/app/components/ui/primaryLink';
+import PrimaryLink1 from '@/app/components/ui/primaryLink1';
 import SecondaryLink from "../components/ui/secondaryLink";
 
 const BACKEND_URL = 'https://volumizeback.gestionempresarial.cl';
@@ -168,7 +168,7 @@ export default function Create() {
                 (objURL) &&
                 <div className='h-64 flex flex-col my-16'>
                   <Viewer url={objURL} rotate={[0, 0, 0]} />
-                  <PrimaryLink text="Download" url={objURL} />
+                  <PrimaryLink1 text="Download" url={objURL} />
                 </div>
               )
             }
