@@ -1,6 +1,5 @@
 "use client";
 
-import "./header.css"
 import { useState } from 'react';
 
 export default function Header({ mainBtnText }: { mainBtnText?: string }) {
