@@ -84,7 +84,7 @@ export default function Create() {
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const debug = true;
+    const debug = false;
     if (debug) {
       setObjURL(debugURL);
       return;
