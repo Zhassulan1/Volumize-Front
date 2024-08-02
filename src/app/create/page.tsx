@@ -58,7 +58,6 @@ export default function Create() {
 
   const onRemoveImage = () => {
     setFile(undefined);
-    setImageURL(null);
     setObjURL('');
     setIsProcessed(false);
     setLoading(false);

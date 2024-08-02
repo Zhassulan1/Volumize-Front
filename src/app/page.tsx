@@ -1,10 +1,10 @@
 'use client'
 
 import Header from "./components/layout/header";
+import PrimaryLink1 from "./components/ui/primaryLink1";
 import Viewer from "./components/ui/viewer";
 
 const ROBOT_DEMO_URL = "https://volumize-bucket.s3.amazonaws.com/robot_demo.obj"
-// const ROBOT_DEMO_URL = ""
 
 export default function App() {
   return (
@@ -25,7 +25,9 @@ export default function App() {
             </p>
 
             <div className="h-32 md:h-10"></div>
-              
+              <div className="flex underline">
+                <PrimaryLink1 url={"/create"} text={"Start creating your models now"} big></PrimaryLink1>
+              </div>
             <div className="h-32 md:h-10"></div>
 
             <div className="grid gap-8 md:grid-cols-2">
