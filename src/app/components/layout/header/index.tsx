@@ -42,12 +42,12 @@ export default function Header({ mainBtnText }: { mainBtnText?: string }) {
                         <PrimaryLink2 url={"/create"} text={"Get started"}></PrimaryLink2>
                     )}
                     <button 
-                    data-collapse-toggle="mobile-menu-2" 
-                    type="button" 
-                    className="inline-flex items-center p-2 text-sm rounded-lg lg:hidden focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600" 
-                    aria-controls="mobile-menu-2" 
-                    aria-expanded={isMobileMenuOpen}
-                    onClick={handleMobileMenuToggle}
+                        data-collapse-toggle="mobile-menu-2" 
+                        type="button" 
+                        className="inline-flex items-center p-2 text-sm rounded-lg lg:hidden focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600" 
+                        aria-controls="mobile-menu-2" 
+                        aria-expanded={isMobileMenuOpen}
+                        onClick={handleMobileMenuToggle}
                     >
                     <span className="sr-only">
                         Open main menu
