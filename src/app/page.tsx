@@ -25,7 +25,7 @@ export default function App() {
             </p>
 
             <div className="h-32 md:h-10"></div>
-              <div className="flex underline">
+              <div className="flex hover:underline">
                 <PrimaryLink1 url={"/create"} text={"Start creating your models now"} big></PrimaryLink1>
               </div>
             <div className="h-32 md:h-10"></div>
