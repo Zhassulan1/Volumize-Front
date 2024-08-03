@@ -142,9 +142,10 @@ export default function UploadSection() {
 
           {
             loading ? (
-              <div className='items-center md:mx-0 m-auto max-w-64'>
+              <div className='items-center md:mx-4 m-auto max-w-64'>
                 <Progress progress={progress} />
                 <TimeCounter />
+                <div className="h-32 md:h-32"></div>
               </div>
             ) : (
               objURL &&
