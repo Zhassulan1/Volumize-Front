@@ -4,7 +4,7 @@ export default function Team() {
 
     return (
         <>
-            <Header />
+            <Header mainBtnText={"Create now"} />
             <div className="bg-gradient-to-br from-gray-900 to-black align-middle justify-between">
                 <div className="min-h-screen align-middle justify-center">
                     <a href="https://github.com/Zhassulan1/">

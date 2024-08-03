@@ -39,7 +39,7 @@ export default function Header({ mainBtnText }: { mainBtnText?: string }) {
                 </div>
                 <div className="flex items-center">
                     {!!mainBtnText && (
-                        <PrimaryLink2 url={"/create"} text={"Get started"}></PrimaryLink2>
+                        <PrimaryLink2 url={"/create"} text={mainBtnText}></PrimaryLink2>
                     )}
                     <button 
                         data-collapse-toggle="mobile-menu-2" 
